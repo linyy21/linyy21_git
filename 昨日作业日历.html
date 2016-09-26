@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box{
+				width: 220px;
+				height: 350px;
+				background: #ccc;
+				margin: 10px auto;
+			}
+			ul{
+				overflow:  hidden;
+			}
+			
+			li{
+				float: left;
+				width: 50px;
+				height: 53px;
+				text-align: center;
+				border: 1px solid #999;
+				margin-left: 10px;
+				margin-top: 10px;
+				background: #444;
+				color: white;
+				cursor: pointer;
+			}
+			#showInfo{
+				width: 200px;
+				height: 50px;
+				border: 1px solid white;
+				margin: 10px auto;
+			}
+			.active{
+				background: white;
+				border: 1px solid orange;
+				color: orange;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+			var oBox = document.getElementById("box");
+				
+			var aLi =	oBox.getElementsByTagName("li");
+				
+			var oShowInfo = document.getElementById("showInfo");
+			
+			//根据当前月份设置li样式
+			aLi[new Date().getMonth()].className = "active";
+			oShowInfo.innerHTML = new Date().getMonth()+1+"月你好";
+			
+			for(var i=0;i<aLi.length;i++){
+				//给每一个li添加index1属性
+				aLi[i].index1 = i;
+				
+				//给每一个li添加一个点击事件
+				aLi[i].onclick = function(){
+					//当前对象
+					var index = this.index1;//获取自定义的下标属性值
+					//修改showinfo
+					oShowInfo.innerHTML = index +1+"月份你好";
+					//修改li的点击样式
+					for(var j=0;j<aLi.length;j++){
+						if(this == aLi[j]){
+							this.className = "active";
+						}else{
+							aLi[j].className = "";
+						}
+					}
+					
+				};
+				
+			}
+			
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul >
+				<li >
+					<h2>1</h2>
+					<p>Jan</p>
+				</li>
+				<li>
+					<h2>2</h2>
+					<p>Feb</p>
+				</li>
+				<li>
+					<h2>3</h2>
+					<p>Mar</p>
+				</li>
+				<li>
+					<h2>4</h2>
+					<p>Apr</p>
+				</li>
+				<li>
+					<h2>5</h2>
+					<p>May</p>
+				</li>
+				<li>
+					<h2>6</h2>
+					<p>Jun</p>
+				</li>
+				<li>
+					<h2>7</h2>
+					<p>Jul</p>
+				</li>
+				<li>
+					<h2>8</h2>
+					<p>Aug</p>
+				</li>
+				<li>
+					<h2>9</h2>
+					<p>Sep</p>
+				</li>
+				<li>
+					<h2>10</h2>
+					<p>Oct</p>
+				</li>
+				<li>
+					<h2>11</h2>
+					<p>Nov</p>
+				</li>
+				<li>
+					<h2>12</h2>
+					<p>Dec</p>
+				</li>
+			</ul>
+			<div id="showInfo">xxx月份你好</div>
+		</div>
+	</body>
+</html>
